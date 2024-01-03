@@ -1,15 +1,10 @@
-import styled from "styled-components";
-
-const StartDiv = styled.div`
-  color: black;
-`;
+import Text from "~/components/Text/Text";
 
 function Error404Page() {
   return (
-    <StartDiv>
-      <StartDiv>Error404</StartDiv>
-      <StartDiv>Error404</StartDiv>
-    </StartDiv>
+    <Text size="xxl" weight="bold">
+      Error404
+    </Text>
   );
 }
 

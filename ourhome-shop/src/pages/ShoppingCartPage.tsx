@@ -1,81 +1,37 @@
-import { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
+import { useContext } from "react";
+import * as S from "~/pages/Page.styled";
+import useCart from "~/hooks/useCart";
 import { CartContext } from "~/contexts/CartContext";
-
-const StartDiv = styled.div`
-  color: black;
-  padding: 10px;
-`;
-const StartImage = styled.img`
-  height: 20%;
-  width: 20%;
-`;
+import { TShopItem } from "~/types/list";
+import Text from "~/components/Text/Text";
+import CartItem from "~/components/CartItem/CartItem";
+import CartSummary from "~/components/CartSummary/CartSummary";
 
 function ShoppingCartPage() {
-  const { cart, setCart } = useContext(CartContext);
-  const [shipping, setShipping] = useState(3000);
-  const [total, setTotal] = useState(0);
-  const [finalTotal, setFinalTotal] = useState(0);
+  const cartContext = useContext(CartContext);
 
-  const changeQuantity = (id, quantity) => {
-    const updatedCart = cart.map((item) =>
-      item.id === id ? { ...item, itemQuantity: quantity } : item
-    );
-    setCart(updatedCart);
-  };
+  if (!cartContext) {
+    throw new Error("CartContext not found");
+  }
 
-  useEffect(() => {
-    const updatedTotal = cart.reduce(
-      (sum, item) => sum + item.itemPrice * item.itemQuantity,
-      0
-    );
-    setTotal(updatedTotal);
-  }, [cart]);
+  const { cart, setCart } = cartContext;
+  const { total, shipping, finalTotal } = useCart(cart);
 
-  useEffect(() => {
-    const updatedShipping = total >= 30000 ? 0 : 3000;
-    setShipping(updatedShipping);
-  }, [total]);
-
-  useEffect(() => {
-    const updatedFinalTotal = total + shipping;
-    setFinalTotal(updatedFinalTotal);
-  }, [total, shipping]);
+  const cartTitle = ["상품명", "구매가", "수량", "금액"];
 
   return (
-    <StartDiv>
-      <StartDiv>Shopping</StartDiv>
-      <StartDiv>cart</StartDiv>
-      {cart.length > 0 &&
-        cart.map((item) => {
-          let uuid = self.crypto.randomUUID();
-          console.log(item.itemPrice);
-          return (
-            <StartDiv key={uuid}>
-              <StartDiv>{item.id}</StartDiv>
-              <StartImage src={item.itemImage} />
-              {/* <StartDiv>{item.itemName}</StartDiv> */}
-              {/* <StartDiv>{item.itemSubName}</StartDiv> */}
-              <StartDiv>{item.itemDiscountPrice}</StartDiv>
-              {/* <StartDiv>{item.itemPrice}</StartDiv> */}
-              {/* <StartDiv>{item.itemDiscountRate}</StartDiv> */}
-              {/* <StartDiv>{item.itemType}</StartDiv> */}
-              <input
-                type="number"
-                value={item.itemQuantity}
-                onChange={(e) =>
-                  changeQuantity(item.id, Number(e.target.value))
-                }
-              />
-              <StartDiv>{item.itemQuantity}</StartDiv>
-              <StartDiv>{item.itemPrice * item.itemQuantity}</StartDiv>
-            </StartDiv>
-          );
+    <S.Container>
+      <S.TitleGrid>
+        {cartTitle.map((title) => {
+          return <Text size="sm">{title}</Text>;
         })}
-      <StartDiv>{total}</StartDiv>
-      <StartDiv>배송비: {shipping}</StartDiv>
-      <StartDiv>최종 결제 금액: {finalTotal}</StartDiv>
-    </StartDiv>
+      </S.TitleGrid>
+      {cart.length > 0 &&
+        cart.map((item: TShopItem) => {
+          return <CartItem key={item.id} item={item} setCart={setCart} />;
+        })}
+      <CartSummary total={total} shipping={shipping} finalTotal={finalTotal} />
+    </S.Container>
   );
 }
 
