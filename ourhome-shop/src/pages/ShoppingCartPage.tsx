@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import * as S from "~/pages/Page.styled";
+import * as S from "~/pages/ShoppingPage.styled";
 import useCart from "~/hooks/useCart";
 import { CartContext } from "~/contexts/CartContext";
 import { TShopItem } from "~/types/list";

@@ -5,9 +5,12 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  gap: 2rem;
   padding: 2rem;
   overflow: hidden;
+`;
+
+export const ContainerGap = styled(Container)`
+  gap: 2rem;
 `;
 
 export const TableGrid = styled.div`
