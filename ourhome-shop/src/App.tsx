@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import ShoppingListPage from "./pages/ShoppingListPage";
-import ShoppingCartPage from "./pages/ShoppingCartPage";
-import Error404Page from "./pages/Error404Page";
+import ShoppingListPage from "~/pages/ShoppingListPage";
+import ShoppingCartPage from "~/pages/ShoppingCartPage";
+import Error404Page from "~/pages/Error404Page";
+import { CartProvider } from "~/contexts/CartContext";
 import "./App.css";
-import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   return (
