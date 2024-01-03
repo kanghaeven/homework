@@ -51,7 +51,7 @@ export const shoppingLists: TShopItem[] = [
       "https://mall.ourhome.co.kr//attach_file/20230102/46F635C6C78A42EA8290B235FDA4D829.jpg",
     itemName: "아워홈 치킨스테이크 오리지널 920g (4인분)",
     itemSubName: "겉바속촉 통닭다리살 오븐구이 치킨스테이크",
-    itemDiscountPrice: 17000,
+    itemDiscountPrice: 14320,
     itemPrice: 17900,
     itemDiscountRate: 5,
     itemType: "냉장",
