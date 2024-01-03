@@ -3,7 +3,7 @@ export interface TShopItem {
   itemImage: string;
   itemName: string;
   itemSubName: string;
-  itemDiscountPrice: number | null;
+  itemDiscountPrice: number;
   itemPrice: number;
   itemDiscountRate: number;
   itemType: string;
