@@ -73,7 +73,7 @@ export const shoppingLists: TShopItem[] = [
       "	https://mall.ourhome.co.kr//attach_file/goodImages/S000000000044_1.jpg",
     itemName: "소고기장조림 200g",
     itemSubName: "장조림, 간편반찬, 꽈리고추, 곤약",
-    itemDiscountPrice: null,
+    itemDiscountPrice: 3670,
     itemPrice: 3670,
     itemDiscountRate: 0,
     itemType: "냉장",
