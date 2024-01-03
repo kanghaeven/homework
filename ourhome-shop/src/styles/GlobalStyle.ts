@@ -1,7 +1,19 @@
 import { createGlobalStyle } from "styled-components";
-import theme from "../styles/theme";
+import theme from "~/styles/theme";
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 600;
+    src: url("/assets/fonts/NotoSansKR-Bold.ttf") format("ttf");
+  }
+
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    src: url("/assets/fonts/NotoSansKR-Regular.ttf") format("ttf");
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -9,22 +21,21 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    font-family: 'Noto Sans KR', sans-serif;
     color: ${theme.color.BLACK}
   }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   
-  body,
   input,
   select,
   textarea,
-  button {
-    font-family: 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-
-  body:has([role="dialog"]) {
-    overflow: hidden;
-  }
-
   ul,
+  
   li {
     list-style: none;
   }
@@ -61,37 +72,11 @@ const GlobalStyle = createGlobalStyle`
   thead,
   tr,
   th,
-  td {
-    margin: 0;
-    padding: 0;
-
-    border: 0;
-    outline: 0;
-    border-collapse: collapse;
-    
-    font-size: 100%;
-    
-    background: transparent;
-    
-    vertical-align: baseline;
-  }
+  td,
 
   *.hidden {
     position: absolute;
     overflow: hidden;
-
-    width: 1px;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    
-    border: 0;
-    
-    white-space: nowrap;
-    
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
   }
 `;
 
