@@ -61,7 +61,7 @@ function CartItem({ item, setCart }: TCartItem) {
       <S.AlignCol>
         <S.AlignTextRow>
           <Text size="lg" weight="bold">
-            {(item.itemPrice * newQuantity).toLocaleString()}
+            {(item.itemDiscountPrice * newQuantity).toLocaleString()}
           </Text>
           <Text size="lg">원</Text>
         </S.AlignTextRow>

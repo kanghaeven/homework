@@ -10,7 +10,8 @@ function useCart(cart: TShopItem[]) {
     // 장바구니에 있는 모든 아이템의 가격 합산하여 총 가격 계산
     const updatedTotal = cart.reduce(
       (sum: number, item: TShopItem) =>
-        sum + item.itemPrice * (item.itemQuantity ? item.itemQuantity : 0),
+        sum +
+        item.itemDiscountPrice * (item.itemQuantity ? item.itemQuantity : 0),
       0
     );
     setTotal(updatedTotal);
